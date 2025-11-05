@@ -54,7 +54,7 @@ This ensures centered, balanced content on the page and perfect PDF alignment.
 
 ## 📂 Project Structure
 
-````bash
+```bash
 src/
  ├─ App.tsx
  │   ├─ Imports the CV and Motivational Letter constants
@@ -83,6 +83,9 @@ src/
  │   └─ `types.d.ts` — defines the `CV` and `MotivationalLetter` types.
  │
  └─ index.css — Tailwind setup, print styles, and typography rules.
+```
+
+---
 
 ## 🧠 Key Notes on Layouts
 
@@ -92,7 +95,7 @@ src/
 - Remaining experiences continue on the second page.
 - The `showFooter={true}` prop creates a footer message such as:
   > “Expérience professionnelle (suite sur la page suivante)”
-  or its English equivalent.
+  > or its English equivalent.
 - You can adjust how many experiences appear per page by changing the `arrayStart` and `arrayEnd` props on the `CvProfessionalExperience` components inside `CvLayout`.
 
 ### `MotivationalLetterLayout.tsx`
@@ -111,7 +114,7 @@ To use your own CV and motivational letter data, import your chosen application 
 
 ```ts
 import { myCompanyCv as cv, myCompanyMl as ml } from "./applications/myCompany";
-````
+```
 
 The App.tsx layout components are already configured as:
 
@@ -145,7 +148,9 @@ For example, in `MlBody.tsx`:
 <div className="prose prose-sm md:prose-base prose-p:my-2 max-w-full">
 ```
 
-### 🏃‍♂️ Run the App Yourself
+---
+
+## 🏃‍♂️ Run the App Yourself
 
 To run the project locally:
 
@@ -169,7 +174,9 @@ Once started, open the URL displayed in your terminal — usually:
 
 Your app should now be running locally, displaying either the CV or motivational letter view.
 
-### 🖨️ Printing / Exporting to PDF
+---
+
+## 🖨️ Printing / Exporting to PDF
 
 The application is designed for direct export via your browser’s **Print → Save as PDF** feature.
 
@@ -189,7 +196,9 @@ The application is designed for direct export via your browser’s **Print → S
 - Choose the built-in **Save as PDF** destination.
 - Ensure images print crisply — the app is optimized for web and PDF fidelity.
 
-### 👤 Author
+---
+
+## 👤 Author
 
 Martin Connor Sexton
 📍 Capbreton, France
