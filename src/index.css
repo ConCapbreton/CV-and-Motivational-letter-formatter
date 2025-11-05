@@ -1,0 +1,101 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* Screen defaults */
+.cv-container {
+  background: white;
+  color: #222;
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+
+/* DEBUG BORDER - visible on screen, hidden in print */
+.debug-border {
+  width: 210mm;
+  height: 297mm;
+  padding: 20px; /* or p-8 equivalent */
+  box-sizing: border-box; /* ensures padding is inside the border */
+  border: 2px dashed blue;
+  background: white;
+}
+
+/* PRINT STYLES */
+@media print {
+  /* A4 page setup */
+  @page {
+    size: A4;
+    margin: 10mm;
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+
+  /* Center the CV and limit width to A4 */
+  .cv-container {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Main CV layout behavior */
+  .cv-layout {
+    page-break-inside: auto !important;
+    page-break-after: auto !important;
+  }
+
+  header {
+    page-break-after: avoid !important;
+  }
+
+  section,
+  div {
+    page-break-inside: auto !important;
+  }
+
+  /* Remove debug border and padding in print */
+  .debug-border {
+    border: none !important;
+    padding: 8mm !important; /* internal spacing */
+    margin: 0 auto;
+    width: 210mm;
+    height: 297mm;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* top-aligned inside the box */
+  }
+
+  /* Hide any UI elements not meant for print */
+  button,
+  nav,
+  .no-print {
+    display: none !important;
+  }
+
+  /* Avoid page breaks after headings */
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+
+  /* Prevent awkward section splits */
+  section {
+    page-break-inside: avoid;
+  }
+
+  img {
+    image-rendering: auto !important; /* don't enhance / over-rasterize */
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    transform: scale(1); /* prevents vector upscaling */
+    max-width: 100% !important;
+    height: auto !important;
+    image-resolution: 96dpi !important; /* Chrome ignores this, but helps some renderers */
+    object-fit: cover;
+    transform: scale(1) translateZ(0); /* enforce GPU compositing instead of re-rasterizing */
+    filter: brightness(99.9999%);
+  }
+}
